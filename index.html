@@ -8,11 +8,47 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
+<body class="black-background">
+  <header class="gray-background">
+    <div class="row">
+      <div class="column-full ai-center">
+        <h2 class="header-format">Crypto Catalog</h2>
+        <a href="#" class="search-link">Search</a>
+      </div>
+    </div>
   </header>
-  <main>
+  <main class="container">
+    <div class="search-view" data-view="search">
+      <form class="search-form">
+        <div class="row height ai-center">
+          <div class="column-full">
+            <div class="row">
+              <div class="column-four-fifths text-align-center">
+                <input type="text" class="search-bar" id="search-input" placeholder="Search for asset..." required>
+              </div>
+              <div class="column-one-fifth text-align-center">
+                <button type="submit" class="search-button">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="details-view-gray-background hidden" data-view="details">
+      <div class="row">
+        <div class="column-full">
+          <div class="text-align-center">
+            <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" alt="picture of token" class="details-picture">
+          </div>
+          <p class="details-name text-align-center"></p>
+          <p class="details-text price text-align-left"></p>
+          <p class="details-text market-cap text-align-left"></p>
+          <p class="details-text rank text-align-left"></p>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
