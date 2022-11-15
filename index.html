@@ -15,29 +15,37 @@
     <div class="row">
       <div class="column-full ai-center">
         <h2 class="header-format">Crypto Catalog</h2>
-        <a href="#">Search</a>
+        <a href="#" class="search-link">Search</a>
       </div>
     </div>
   </header>
   <main class="container">
     <div class="search-view" data-view="search">
-      <div class="row height ai-center">
-        <div class="column-full text-align-center">
-          <input type="text" class="search-bar" id="search-input" placeholder="Search for asset..." required>
-          <button type="submit" class="search-button">Search</button>
+      <form class="search-form">
+        <div class="row height ai-center">
+          <div class="column-full">
+            <div class="row">
+              <div class="column-four-fifths text-align-center">
+                <input type="text" class="search-bar" id="search-input" placeholder="Search for asset..." required>
+              </div>
+              <div class="column-one-fifth text-align-center">
+                <button type="submit" class="search-button">Search</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-    <div class="details-gray-background hidden" data-view="details">
+    <div class="details-view-gray-background hidden" data-view="details">
       <div class="row">
         <div class="column-full">
           <div class="text-align-center">
             <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" alt="picture of token" class="details-picture">
           </div>
-          <p class="details-name text-align-center">Ethereum (ETH)</p>
-          <p class="details-text text-align-left">Price: $1,262.52</p>
-          <p class="details-text text-align-left">Market Cap: $155 Billion</p>
-          <p class="details-text text-align-left">Rank: 2</p>
+          <p class="details-name text-align-center"></p>
+          <p class="details-text price text-align-left"></p>
+          <p class="details-text market-cap text-align-left"></p>
+          <p class="details-text rank text-align-left"></p>
         </div>
       </div>
     </div>
