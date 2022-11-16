@@ -13,7 +13,7 @@
   flex-basis: 100%;
 }
 
-.column-half {
+.column-thirds {
   flex-basis: 100%;
 }
 
@@ -39,11 +39,11 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 1100px;
+    max-width: 1400px;
   }
 
-  .column-half {
-    flex-basis: 49%;
+  .column-thirds {
+    flex-basis: 32%;
   }
 
   .column-four-fifths {
