@@ -106,3 +106,27 @@ a {
   font-size: 18px;
   cursor: pointer;
 }
+
+.list-gray-background {
+  background-color: #3e3e3e;
+  border-radius: 10px;
+}
+
+.list-image {
+  width: 110%;
+}
+
+li {
+  list-style: none;
+  margin-top: 15px;
+  margin-right: 5px;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.list-name {
+  font-size: 30px;
+  color: white;
+}
