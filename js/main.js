@@ -5,13 +5,20 @@ function getCryptoData(id) {
   xhr.addEventListener('load', function () {
     $detailsPicture.setAttribute('src', xhr.response[0].image);
     $detailsName.textContent = xhr.response[0].name + ' ' + '(' + xhr.response[0].symbol.toUpperCase() + ')';
-    $price.textContent = 'Price: ' + xhr.response[0].current_price;
-    $marketcap.textContent = 'Market Cap: ' + xhr.response[0].market_cap;
+    $price.textContent = 'Price: ' + '$' + xhr.response[0].current_price;
+    $marketcap.textContent = 'Market Cap: ' + '$' + xhr.response[0].market_cap;
     $rank.textContent = 'Rank: ' + xhr.response[0].market_cap_rank;
     $searchView.className = 'search-view hidden';
     $detailsView.className = 'details-view-gray-background';
     data.view = 'details';
   });
+  var $addButton = document.querySelector('.add-button');
+  $addButton.addEventListener('click', addHandler);
+
+  function addHandler(event) {
+    data.list.push(xhr.response[0]);
+
+  }
   xhr.send();
 }
 var $searchForm = document.querySelector('.search-form');
@@ -27,6 +34,7 @@ var $rank = document.querySelector('.rank');
 
 $searchForm.addEventListener('submit', searchInputHandler);
 $searchLink.addEventListener('click', searchViewHandler);
+
 function searchInputHandler(event) {
   event.preventDefault();
   getCryptoData($searchInput.value);
@@ -36,4 +44,11 @@ function searchViewHandler(event) {
   $searchView.className = 'search-view';
   $detailsView.className = 'details-view-gray-background hidden';
   data.view = 'search';
+}
+
+var $addButton = document.querySelector('.add-button');
+$addButton.addEventListener('click', addHandler);
+
+function addHandler(event) {
+
 }
