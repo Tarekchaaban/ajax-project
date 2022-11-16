@@ -134,3 +134,7 @@ ul {
   font-size: 30px;
   color: white;
 }
+
+.as-center {
+  align-self: center;
+}

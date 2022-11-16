@@ -88,7 +88,7 @@ function renderCrypto(currencyData) {
   $divRow.className = 'row';
 
   var $columnOneSixthDiv = document.createElement('div');
-  $columnOneSixthDiv.className = 'column-one-sixth';
+  $columnOneSixthDiv.className = 'column-one-sixth as-center';
 
   var $listImage = document.createElement('img');
   $listImage.className = 'list-image';
