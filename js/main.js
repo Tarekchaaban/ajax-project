@@ -10,15 +10,9 @@ function getCryptoData(id) {
     $rank.textContent = 'Rank: ' + xhr.response[0].market_cap_rank;
     $searchView.className = 'search-view hidden';
     $detailsView.className = 'details-view-gray-background';
+    data.currentCurrencyData = xhr.response;
     data.view = 'details';
   });
-  var $addButton = document.querySelector('.add-button');
-  $addButton.addEventListener('click', addHandler);
-
-  function addHandler(event) {
-    data.list.push(xhr.response[0]);
-
-  }
   xhr.send();
 }
 var $searchForm = document.querySelector('.search-form');
@@ -50,5 +44,6 @@ var $addButton = document.querySelector('.add-button');
 $addButton.addEventListener('click', addHandler);
 
 function addHandler(event) {
+  data.list.unshift(data.currentCurrencyData);
 
 }
