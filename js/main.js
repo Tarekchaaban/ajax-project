@@ -45,6 +45,7 @@ function detailsViewHandler(event) {
 function searchInputHandler(event) {
   event.preventDefault();
   getCryptoData($searchInput.value.toLowerCase());
+  event.target.reset();
 }
 
 function searchViewHandler(event) {
