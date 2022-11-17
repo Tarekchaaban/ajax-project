@@ -44,7 +44,7 @@ function detailsViewHandler(event) {
 
 function searchInputHandler(event) {
   event.preventDefault();
-  getCryptoData($searchInput.value);
+  getCryptoData($searchInput.value.toLowerCase());
 }
 
 function searchViewHandler(event) {
@@ -65,14 +65,14 @@ var $addButton = document.querySelector('.add-button');
 $addButton.addEventListener('click', addHandler);
 
 function addHandler(event) {
-  var found = false;
+  var alreadySaved = false;
   for (var i = 0; i < data.list.length; i++) {
-    if (data.list[i].id === $searchInput.value) {
-      found = true;
+    if (data.list[i].id === $searchInput.value.toLowerCase()) {
+      alreadySaved = true;
       break;
     }
   }
-  if (found === false) {
+  if (alreadySaved === false) {
     data.currentCurrencyData.Id = data.nextEntryId;
     data.nextEntryId++;
     data.list.unshift(data.currentCurrencyData);
