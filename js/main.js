@@ -45,7 +45,6 @@ function detailsViewHandler(event) {
 function searchInputHandler(event) {
   event.preventDefault();
   getCryptoData($searchInput.value.toLowerCase());
-  event.target.reset();
 }
 
 function searchViewHandler(event) {
@@ -70,7 +69,8 @@ function addHandler(event) {
   for (var i = 0; i < data.list.length; i++) {
     if (data.list[i].id === $searchInput.value.toLowerCase()) {
       alreadySaved = true;
-      break;
+      $searchForm.reset();
+      watchlistViewHandler();
     }
   }
   if (alreadySaved === false) {
@@ -79,10 +79,8 @@ function addHandler(event) {
     data.list.unshift(data.currentCurrencyData);
     var newCrypto = renderCrypto(data.currentCurrencyData);
     $unorderedListRow.prepend(newCrypto);
-    $searchView.className = 'search-view hidden';
-    $detailsView.className = 'details-view-gray-background hidden';
-    $watchlistView.className = 'watchlist-view';
-    data.view = 'watchlist';
+    watchlistViewHandler();
+    $searchForm.reset();
   }
 }
 function renderCrypto(currencyData) {
@@ -91,7 +89,10 @@ function renderCrypto(currencyData) {
   $columnThirdsList.setAttribute('data-entry-id', currencyData.Id);
 
   var $listGrayBackgroundDiv = document.createElement('div');
-  $listGrayBackgroundDiv.className = 'list-gray-background';
+  $listGrayBackgroundDiv.className = 'list-gray-background relative';
+
+  var $deleteIcon = document.createElement('i');
+  $deleteIcon.className = 'fa-solid fa-xmark delete-icon';
 
   var $divRow = document.createElement('div');
   $divRow.className = 'row';
@@ -113,6 +114,7 @@ function renderCrypto(currencyData) {
 
   $columnThirdsList.appendChild($listGrayBackgroundDiv);
   $listGrayBackgroundDiv.appendChild($divRow);
+  $listGrayBackgroundDiv.appendChild($deleteIcon);
   $divRow.appendChild($columnOneSixthDiv);
   $divRow.appendChild($columnTwoThirdsDiv);
   $columnOneSixthDiv.appendChild($listImage);
@@ -145,4 +147,46 @@ function listToDetails(event) {
 
     }
   }
+}
+
+var $modalCloseButton = document.querySelector('.no-button');
+var $confirmDeletionButton = document.querySelector('.yes-button');
+var $modal = document.querySelector('.modal');
+var $overlay = document.querySelector('.overlay');
+$unorderedListRow.addEventListener('click', showModal);
+$modalCloseButton.addEventListener('click', hideModal);
+$confirmDeletionButton.addEventListener('click', deleteHandler);
+
+function showModal(event) {
+  if (event.target.tagName === 'I') {
+    $modal.className = 'modal';
+    $overlay.className = 'overlay';
+    watchlistViewHandler();
+    var dataEntryNumberString = event.target.closest('.column-thirds').getAttribute('data-entry-id');
+    data.editing = parseInt(dataEntryNumberString);
+  }
+}
+
+function hideModal(event) {
+  $modal.className = 'modal hidden';
+  $overlay.className = 'overlay hidden';
+  data.editing = null;
+}
+
+function deleteHandler(event) {
+  for (var i = 0; i < data.list.length; i++) {
+    if (data.editing === data.list[i].Id) {
+      data.list.splice(i, 1);
+    }
+  }
+  var $listItems = document.querySelectorAll('li');
+  for (var j = 0; j < $listItems.length; j++) {
+    var dataEntryNumberString = $listItems[j].getAttribute('data-entry-id');
+    if (parseInt(dataEntryNumberString) === data.editing) {
+      $listItems[j].remove();
+      data.editing = null;
+    }
+  }
+  hideModal();
+  watchlistViewHandler();
 }

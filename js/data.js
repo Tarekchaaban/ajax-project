@@ -3,7 +3,8 @@ var data = {
   view: 'search',
   list: [],
   currentCurrencyData: {},
-  nextEntryId: 1
+  nextEntryId: 1,
+  editing: null
 };
 
 window.addEventListener('beforeunload', unloadHandler);

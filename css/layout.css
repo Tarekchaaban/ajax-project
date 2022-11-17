@@ -9,6 +9,10 @@
   flex-wrap: wrap;
 }
 
+.col-50 {
+  flex-basis: 50%;
+}
+
 .column-full {
   flex-basis: 100%;
 }
@@ -43,7 +47,7 @@
   }
 
   .column-thirds {
-    flex-basis: 32%;
+    flex-basis: 33%;
   }
 
   .column-four-fifths {
