@@ -115,6 +115,7 @@ a {
 
 .list-image {
   width: 95%;
+  margin-left: 2px;
 }
 
 li {

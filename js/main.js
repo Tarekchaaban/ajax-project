@@ -65,17 +65,25 @@ var $addButton = document.querySelector('.add-button');
 $addButton.addEventListener('click', addHandler);
 
 function addHandler(event) {
-  data.currentCurrencyData.Id = data.nextEntryId;
-  data.nextEntryId++;
-  data.list.unshift(data.currentCurrencyData);
-  var newCrypto = renderCrypto(data.currentCurrencyData);
-  $unorderedListRow.prepend(newCrypto);
-  $searchView.className = 'search-view hidden';
-  $detailsView.className = 'details-view-gray-background hidden';
-  $watchlistView.className = 'watchlist-view';
-  data.view = 'watchlist';
+  var found = false;
+  for (var i = 0; i < data.list.length; i++) {
+    if (data.list[i].id === $searchInput.value) {
+      found = true;
+      break;
+    }
+  }
+  if (found === false) {
+    data.currentCurrencyData.Id = data.nextEntryId;
+    data.nextEntryId++;
+    data.list.unshift(data.currentCurrencyData);
+    var newCrypto = renderCrypto(data.currentCurrencyData);
+    $unorderedListRow.prepend(newCrypto);
+    $searchView.className = 'search-view hidden';
+    $detailsView.className = 'details-view-gray-background hidden';
+    $watchlistView.className = 'watchlist-view';
+    data.view = 'watchlist';
+  }
 }
-
 function renderCrypto(currencyData) {
   var $columnThirdsList = document.createElement('li');
   $columnThirdsList.className = 'column-thirds';
