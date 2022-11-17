@@ -9,6 +9,10 @@
   flex-wrap: wrap;
 }
 
+.col-50 {
+  flex-basis: 50%;
+}
+
 .column-full {
   flex-basis: 100%;
 }

@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
   <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body class="black-background">
+  <div class="overlay hidden"></div>
   <header class="gray-background">
     <div class="row">
       <div class="column-full ai-center">
@@ -54,8 +58,27 @@
       </div>
     </div>
     <div class="watchlist-view hidden" data-view="watchlist">
-      <ul class="row space-between">
+      <ul class="row jc-flex-start">
       </ul>
+    </div>
+    <div class="modal hidden">
+      <div class="row">
+        <div class="column-full">
+          <h2 class="modal-text-format">Are you sure you want to delete this asset?</h2>
+        </div>
+      </div>
+      <div class="row jc-center ai-center">
+        <div class="column-full">
+          <div class="row space-around">
+            <div class="column-50">
+              <button class="no-button">NO</button>
+            </div>
+            <div class="column-50">
+              <button class="yes-button">YES</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
