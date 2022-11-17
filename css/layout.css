@@ -1,7 +1,7 @@
 .container {
   max-width: 630px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 0.5rem;
 }
 
 .row {
@@ -13,6 +13,10 @@
   flex-basis: 100%;
 }
 
+.column-thirds {
+  flex-basis: 100%;
+}
+
 .column-four-fifths {
   flex-basis: 100%;
 }
@@ -21,13 +25,25 @@
   flex-basis: 100%;
 }
 
+.column-one-sixth {
+  flex-basis: 21%;
+}
+
+.column-two-thirds {
+  flex-basis: 75%;
+}
+
 .hidden {
   display: none !important;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 1000px;
+    max-width: 1400px;
+  }
+
+  .column-thirds {
+    flex-basis: 32%;
   }
 
   .column-four-fifths {

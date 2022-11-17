@@ -3,15 +3,9 @@ function getCryptoData(id) {
   xhr.open('GET', 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&ids=' + id);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    $detailsPicture.setAttribute('src', xhr.response[0].image);
-    $detailsName.textContent = xhr.response[0].name + ' ' + '(' + xhr.response[0].symbol.toUpperCase() + ')';
-    $price.textContent = 'Price: ' + '$' + xhr.response[0].current_price;
-    $marketcap.textContent = 'Market Cap: ' + '$' + xhr.response[0].market_cap;
-    $rank.textContent = 'Rank: ' + xhr.response[0].market_cap_rank;
-    $searchView.className = 'search-view hidden';
-    $detailsView.className = 'details-view-gray-background';
-    data.currentCurrencyData = xhr.response;
-    data.view = 'details';
+    detailsHandler(xhr.response[0]);
+    $addButton.className = 'add-button';
+    detailsViewHandler();
   });
   xhr.send();
 }
@@ -19,7 +13,9 @@ var $searchForm = document.querySelector('.search-form');
 var $searchInput = $searchForm.querySelector('#search-input');
 var $searchView = document.querySelector('.search-view');
 var $detailsView = document.querySelector('.details-view-gray-background');
+var $watchlistView = document.querySelector('.watchlist-view');
 var $searchLink = document.querySelector('.search-link');
+var $watchlistLink = document.querySelector('.watchlist-link');
 var $detailsPicture = document.querySelector('.details-picture');
 var $detailsName = document.querySelector('.details-name');
 var $price = document.querySelector('.price');
@@ -28,22 +24,124 @@ var $rank = document.querySelector('.rank');
 
 $searchForm.addEventListener('submit', searchInputHandler);
 $searchLink.addEventListener('click', searchViewHandler);
+$watchlistLink.addEventListener('click', watchlistViewHandler);
+
+function detailsHandler(object) {
+  $detailsPicture.setAttribute('src', object.image);
+  $detailsName.textContent = object.name + ' ' + '(' + object.symbol.toUpperCase() + ')';
+  $price.textContent = 'Price: ' + '$' + object.current_price;
+  $marketcap.textContent = 'Market Cap: ' + '$' + object.market_cap;
+  $rank.textContent = 'Rank: ' + object.market_cap_rank;
+  data.currentCurrencyData = object;
+}
+
+function detailsViewHandler(event) {
+  $searchView.className = 'search-view hidden';
+  $detailsView.className = 'details-view-gray-background';
+  $watchlistView.className = 'watchlist-view hidden';
+  data.view = 'details';
+}
 
 function searchInputHandler(event) {
   event.preventDefault();
-  getCryptoData($searchInput.value);
+  getCryptoData($searchInput.value.toLowerCase());
 }
 
 function searchViewHandler(event) {
   $searchView.className = 'search-view';
   $detailsView.className = 'details-view-gray-background hidden';
+  $watchlistView.className = 'watchlist-view hidden';
   data.view = 'search';
+}
+
+function watchlistViewHandler(event) {
+  $searchView.className = 'search-view hidden';
+  $detailsView.className = 'details-view-gray-background hidden';
+  $watchlistView.className = 'watchlist-view';
+  data.view = 'watchlist';
 }
 
 var $addButton = document.querySelector('.add-button');
 $addButton.addEventListener('click', addHandler);
 
 function addHandler(event) {
-  data.list.unshift(data.currentCurrencyData);
+  var alreadySaved = false;
+  for (var i = 0; i < data.list.length; i++) {
+    if (data.list[i].id === $searchInput.value.toLowerCase()) {
+      alreadySaved = true;
+      break;
+    }
+  }
+  if (alreadySaved === false) {
+    data.currentCurrencyData.Id = data.nextEntryId;
+    data.nextEntryId++;
+    data.list.unshift(data.currentCurrencyData);
+    var newCrypto = renderCrypto(data.currentCurrencyData);
+    $unorderedListRow.prepend(newCrypto);
+    $searchView.className = 'search-view hidden';
+    $detailsView.className = 'details-view-gray-background hidden';
+    $watchlistView.className = 'watchlist-view';
+    data.view = 'watchlist';
+  }
+}
+function renderCrypto(currencyData) {
+  var $columnThirdsList = document.createElement('li');
+  $columnThirdsList.className = 'column-thirds';
+  $columnThirdsList.setAttribute('data-entry-id', currencyData.Id);
 
+  var $listGrayBackgroundDiv = document.createElement('div');
+  $listGrayBackgroundDiv.className = 'list-gray-background';
+
+  var $divRow = document.createElement('div');
+  $divRow.className = 'row';
+
+  var $columnOneSixthDiv = document.createElement('div');
+  $columnOneSixthDiv.className = 'column-one-sixth as-center';
+
+  var $listImage = document.createElement('img');
+  $listImage.className = 'list-image';
+  $listImage.setAttribute('src', currencyData.image);
+  $listImage.setAttribute('alt', 'picture of coin');
+
+  var $columnTwoThirdsDiv = document.createElement('div');
+  $columnTwoThirdsDiv.className = 'column-two-thirds ai-center';
+
+  var $listName = document.createElement('p');
+  $listName.textContent = currencyData.name + ' ' + '(' + currencyData.symbol.toUpperCase() + ')';
+  $listName.className = 'list-name';
+
+  $columnThirdsList.appendChild($listGrayBackgroundDiv);
+  $listGrayBackgroundDiv.appendChild($divRow);
+  $divRow.appendChild($columnOneSixthDiv);
+  $divRow.appendChild($columnTwoThirdsDiv);
+  $columnOneSixthDiv.appendChild($listImage);
+  $columnTwoThirdsDiv.appendChild($listName);
+
+  return $columnThirdsList;
+
+}
+
+var $unorderedListRow = document.querySelector('ul');
+window.addEventListener('DOMContentLoaded', treeHandler);
+
+function treeHandler(event) {
+  for (var i = 0; i < data.list.length; i++) {
+    var newCryptoEntry = renderCrypto(data.list[i]);
+    $unorderedListRow.appendChild(newCryptoEntry);
+  }
+}
+
+$unorderedListRow.addEventListener('click', listToDetails);
+function listToDetails(event) {
+  if (event.target.closest('li')) {
+    for (var i = 0; i < data.list.length; i++) {
+      var cryptoEntryNumberString = event.target.closest('.column-thirds').getAttribute('data-entry-id');
+      if (parseInt(cryptoEntryNumberString) === data.list[i].Id) {
+        detailsHandler(data.list[i]);
+        detailsViewHandler();
+        $addButton.className = 'add-button hidden';
+      }
+
+    }
+  }
 }

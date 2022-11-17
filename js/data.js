@@ -2,7 +2,8 @@
 var data = {
   view: 'search',
   list: [],
-  currentCurrencyData: {}
+  currentCurrencyData: {},
+  nextEntryId: 1
 };
 
 window.addEventListener('beforeunload', unloadHandler);
