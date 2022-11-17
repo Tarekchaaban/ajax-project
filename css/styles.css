@@ -111,7 +111,6 @@ a {
 .list-gray-background {
   background-color: #3e3e3e;
   border-radius: 10px;
-  margin-right: 10px;
 }
 
 .list-image {
@@ -144,6 +143,15 @@ ul {
 
 .relative {
   position: relative;
+}
+
+.padding-right {
+  padding-right: 5px;
+}
+
+.margin {
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .delete-icon {

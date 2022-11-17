@@ -85,7 +85,7 @@ function addHandler(event) {
 }
 function renderCrypto(currencyData) {
   var $columnThirdsList = document.createElement('li');
-  $columnThirdsList.className = 'column-thirds';
+  $columnThirdsList.className = 'column-thirds margin';
   $columnThirdsList.setAttribute('data-entry-id', currencyData.Id);
 
   var $listGrayBackgroundDiv = document.createElement('div');
