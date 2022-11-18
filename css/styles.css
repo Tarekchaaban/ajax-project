@@ -111,6 +111,7 @@ a {
 .list-gray-background {
   background-color: #3e3e3e;
   border-radius: 10px;
+  padding-bottom: 10px;
 }
 
 .list-image {
@@ -234,4 +235,37 @@ ul {
 
 .text-align-right {
   text-align: right;
+}
+
+.coins-owned-label {
+  color: white;
+  font-size: 17px;
+  margin-right: 5px;
+}
+
+.coins-owned-input-bar {
+  background-color: #3e3e3e;
+  border-color: #4b959e;
+  border-style: solid;
+  width: 24%;
+  padding: 6px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: white;
+}
+
+.coins-owned-submit-symbol {
+  color: #4b959e;
+  font-size: 20px;
+  background-color: #3e3e3e;
+}
+
+.coins-owned-edit-symbol {
+  color: #4b959e;
+  margin-left: 5px;
+}
+
+.coins-owned-submit-button {
+  background-color: #3e3e3e;
+  border: none;
 }
