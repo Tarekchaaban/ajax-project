@@ -125,7 +125,6 @@ li {
 
 ul {
   padding-left: 0;
-  padding-top: 20px;
 }
 
 .space-between {
@@ -220,4 +219,19 @@ ul {
 
 .jc-flex-start {
   justify-content: flex-start;
+}
+
+.current-net-worth {
+  color: white;
+  font-size: 20px;
+  margin-right: 5px;
+  margin-bottom: 0;
+}
+
+.jc-flex-end {
+  justify-content: flex-end;
+}
+
+.text-align-right {
+  text-align: right;
 }

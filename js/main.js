@@ -106,7 +106,7 @@ function renderCrypto(currencyData) {
   $listImage.setAttribute('alt', 'picture of coin');
 
   var $columnTwoThirdsDiv = document.createElement('div');
-  $columnTwoThirdsDiv.className = 'column-two-thirds ai-center';
+  $columnTwoThirdsDiv.className = 'column-two-thirds';
 
   var $listName = document.createElement('p');
   $listName.textContent = currencyData.name + ' ' + '(' + currencyData.symbol.toUpperCase() + ')';
