@@ -200,6 +200,55 @@ function renderCrypto(currencyData) {
   return $columnThirdsList;
 
 }
+/* function coinsOwnedSubmitHandler(event) {
+  event.preventDefault();
+  for (var i = 0; i < data.list.length; i++) {
+    var $coinsOwnedInputBar = document.querySelector('.coins-owned-input-bar');
+    var dataEntryNumberString = event.target.closest('.column-thirds').getAttribute('data-entry-id');
+    if (data.list[i].Id === parseInt(dataEntryNumberString)) {
+      data.list[i].coins_owned = $coinsOwnedInputBar.value;
+      data.editing = parseInt(dataEntryNumberString);
+    }
+    var $listItems = document.querySelectorAll('li');
+    for (var j = 0; j < $listItems.length; j++) {
+      var $coinsOwnedSubmitButton = document.querySelector('.coins-owned-submit-button');
+      var $coinsOwnedSubmitSymbol = document.querySelector('.coins-owned-submit-symbol');
+      var $coinsOwnedEditSymbol = document.querySelector('.coins-owned-edit-symbol');
+      var dataEntryNumberStringTwo = ($listItems[j].getAttribute('data-entry-id'));
+      if (parseInt(dataEntryNumberStringTwo) === data.editing) {
+        $coinsOwnedSubmitButton.className = 'coins-owned-submit-button hidden';
+        $coinsOwnedSubmitSymbol.className = 'fa-regular fa-circle-check coins-owned-submit-symbol hidden';
+        $coinsOwnedEditSymbol.className = 'fa-solid fa-pencil coins-owned-edit-symbol';
+      }
+    }
+  }
+  calculateNetWorth(data.list);
+  var $currentNetWorth = document.querySelector('.current-net-worth');
+  $currentNetWorth.textContent = 'Current Net Worth:' + ' ' + '$' + calculateNetWorth(data.list);
+
+}
+function coinsOwnedEditHandler(event) {
+  for (var i = 0; i < data.list.length; i++) {
+    var dataEntryNumberString = event.target.closest('.column-thirds').getAttribute('data-entry-id');
+    if (data.list[i].Id === parseInt(dataEntryNumberString)) {
+      data.editing = parseInt(dataEntryNumberString);
+    }
+  }
+  var $listItems = document.querySelectorAll('li');
+  for (var j = 0; j < $listItems.length; j++) {
+    var $coinsOwnedSubmitButton = document.querySelector('.coins-owned-submit-button');
+    var $coinsOwnedSubmitSymbol = document.querySelector('.coins-owned-submit-symbol');
+    var $coinsOwnedEditSymbol = document.querySelector('.coins-owned-edit-symbol');
+    var $coinsOwnedInputBar = document.querySelector('.coins-owned-input-bar');
+    var dataEntryNumberStringTwo = ($listItems[j].getAttribute('data-entry-id'));
+    if (parseInt(dataEntryNumberStringTwo) === data.editing) {
+      $coinsOwnedSubmitButton.className = 'coins-owned-submit-button';
+      $coinsOwnedSubmitSymbol.className = 'fa-regular fa-circle-check coins-owned-submit-symbol';
+      $coinsOwnedEditSymbol.className = 'fa-solid fa-pencil coins-owned-edit-symbol hidden';
+      $coinsOwnedInputBar.value = '';
+    }
+  }
+} */
 function calculateNetWorth(array) {
   var totalNetWorth = 0;
   for (var i = 0; i < data.list.length; i++) {
@@ -209,9 +258,6 @@ function calculateNetWorth(array) {
   }
   return totalNetWorth;
 }
-
-var $currentNetWorth = document.querySelector('.current-net-worth');
-$currentNetWorth.textContent = 'Current Net Worth:' + ' ' + '$' + calculateNetWorth(data.list);
 
 var $unorderedListRow = document.querySelector('ul');
 window.addEventListener('DOMContentLoaded', treeHandler);
