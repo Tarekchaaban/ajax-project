@@ -8,6 +8,7 @@ var data = {
 };
 
 window.addEventListener('beforeunload', unloadHandler);
+window.addEventListener('pagehide', unloadHandler);
 var previousData = localStorage.getItem('crypto-catalog-local-storage');
 if (previousData !== null) {
   data = JSON.parse(previousData);
