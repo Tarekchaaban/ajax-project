@@ -19,8 +19,8 @@
 
 .header-format {
   display: inline-block;
-  padding-left: 10px;
-  padding-right: 40px;
+  padding-left: 8px;
+  padding-right: 30px;
   color: #4b959e;
 }
 
@@ -268,4 +268,8 @@ ul {
 .coins-owned-submit-button {
   background-color: #3e3e3e;
   border: none;
+}
+
+i {
+  cursor: pointer;
 }
