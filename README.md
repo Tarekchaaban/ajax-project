@@ -1,5 +1,6 @@
 # crypto-catalog
 
+
 A dynamic HTML, CSS, and JavaScript solo project for crypto enthusiasts looking to keep track of data on specific currencies, as well as aggregate their net worth across exchanges.
 
 ## :thinking: Why I built this
@@ -60,3 +61,4 @@ git clone https://github.com/Tarekchaaban/crypto-catalog.git
 ```
 
 2. Start the project! Once started view the application by opening https://localhost:5000/ in your browser.
+
