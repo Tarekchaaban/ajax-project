@@ -60,5 +60,5 @@ Try the application live here: https://tarekchaaban.github.io/crypto-catalog/
 git clone https://github.com/Tarekchaaban/crypto-catalog.git
 ```
 
-2. Start the project! Once started view the application by opening https://localhost:5000/ in your browser.
+2. Start the project! Once started view the application by opening https://localhost:5500/ in your browser.
 
