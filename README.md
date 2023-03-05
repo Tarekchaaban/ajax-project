@@ -1,7 +1,7 @@
 # Crypto Catalog
 
 
-A dynamic HTML, CSS, and JavaScript solo project for crypto enthusiasts to stay updated on cryptocurrency prices in real-time and aggregate net worth across exchanges.
+A web application for crypto enthusiasts looking to monitor real-time data on specific currencies, as well as aggregate their net worth across exchanges.
 
 ## :thinking: Why I built this
 
